@@ -1,7 +1,7 @@
 captainVersion: 4
 version: '3.7'
 services:
-    pocketbase:
+    $$cap_appname:
         image: ghcr.io/muchobien/pocketbase:$$cap_image_version
         restart: unless-stopped
         command:
