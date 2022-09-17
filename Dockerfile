@@ -10,6 +10,8 @@ RUN pnpm run validate_apps
 RUN pnpm run build
 
 FROM nginx
+
+RUN rm -rf /usr/share/nginx/html/*
 COPY --from=0 /tmp/build/dist /usr/share/nginx/html
 
 EXPOSE 80
