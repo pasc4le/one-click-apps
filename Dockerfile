@@ -5,7 +5,7 @@ WORKDIR /tmp/build
 
 RUN npm i -g pnpm
 
-RUN pnpm ci
+RUN pnpm i --frozen-lockfile
 RUN pnpm run validate_apps
 RUN pnpm run build
 
