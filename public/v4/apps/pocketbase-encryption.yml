@@ -1,0 +1,32 @@
+captainVersion: 4
+version: '3.7'
+services:
+    pocketbase:
+        image: ghcr.io/muchobien/pocketbase:$$cap_image_version
+        restart: unless-stopped
+        command:
+            - --encryptionEnv
+            - ENCRYPTION
+        environment:
+            ENCRYPTION: $$cap_encryption_key
+        volumes:
+            - pb-data:/pb_data
+        caproverExtra:
+            containerHttpPort: 8090
+caproverOneClickApp:
+    variables:
+        - id: '$$cap_image_version'
+          label: Image Version
+          defaultValue: 'latest'
+          description: Checkout https://github.com/muchobien/pocketbase-docker for valid tags.
+        - id: '$$cap_encryption_key'
+          label: Encryption Key
+    instructions:
+        start: Fill out all the inputs to continue
+        end: |-
+            The service is now avaliable. Enable WebSocket support for Realtime
+            operations.
+    displayName: PocketBase (with Encryption)
+    isOfficial: true
+    description: Open Source backend for your next SaaS and Mobile app in 1 file
+    documentation: This docker-compose is taken from https://github.com/muchobien/pocketbase-docker
